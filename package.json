@@ -1,0 +1,17 @@
+{
+  "name": "data-nav",
+  "version": "0.0.1",
+  "description": "data-nav for joudou",
+  "main": "webpack.config.js",
+  "scripts": {
+    "watch": "webpack -d --watch",
+    "build": "webpack -p"
+  },
+  "dependencies": {
+    "react": "15.5.4",
+    "react-dom": "15.5.4",
+    "webpack": "2.5.0"
+  },
+  "author": "yu.zhao@joudou.com",
+  "license": "ISC"
+}
