@@ -8,6 +8,8 @@
                  [com.domkm/silk "0.1.2"]
                  [kibu/pushy "0.3.7"]
                  [day8.re-frame/http-fx "0.1.3"]
+                 [cljs-ajax "0.6.0"]
+
                  [day8.re-frame/async-flow-fx "0.0.6"]
                  [com.smxemail/re-frame-cookie-fx "0.0.1"]
 
@@ -23,7 +25,9 @@
   :clean-targets ^{:protect false} ["resources/public/js/compiled" "target"
                                     "test/js"]
 
-  :figwheel {:css-dirs ["resources/public/css"]}
+  :figwheel {:css-dirs ["resources/public/css"]
+             :server-port 5309
+             }
 
   :less {:source-paths ["less"]
          :target-path  "resources/public/css"}
@@ -33,10 +37,10 @@
   :profiles
   {:dev
    {:dependencies [[binaryage/devtools "0.8.2"]
-                   [figwheel-sidecar "0.5.9"]
+                   [figwheel-sidecar "0.5.10"]
                    [com.cemerick/piggieback "0.2.1"]]
 
-    :plugins      [[lein-figwheel "0.5.9"]
+    :plugins      [[lein-figwheel "0.5.10"]
                    [lein-doo "0.1.7"]]
     }}
 
@@ -68,6 +72,18 @@
                     :output-to     "resources/public/js/compiled/test.js"
                     :output-dir    "resources/public/js/compiled/test/out"
                     :optimizations :none}}
+
+    {:id           "server-dev"
+     :source-paths ["server_src"]
+     :figwheel     true
+     :compiler     {:main data-nav-server.core
+                    :output-to "target/server_out/data_nav_server_with_figwheel.js"
+                    :output-dir "target/server_out"
+                    :target :nodejs
+                    :optimizations :none
+                    :source-map true
+                    }
+     }
     ]}
 
   )

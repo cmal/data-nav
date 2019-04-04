@@ -5,7 +5,9 @@
               [data-nav.events]
               [data-nav.subs]
               [data-nav.views :as views]
-              [data-nav.config :as config]))
+              [data-nav.config :as config]
+              #_[cljs.nodejs :as nodejs]
+              #_[data-nav.server :as server]))
 
 
 (defn dev-setup []
@@ -23,3 +25,8 @@
   (re-frame/dispatch-sync [:initialize-db])
   (dev-setup)
   (mount-root))
+
+#_(def -main
+  (fn []
+    (doto (.createServer https #(app %1 %2))
+      (.listen 3000))))
